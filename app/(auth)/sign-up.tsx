@@ -4,6 +4,8 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import InputField from "@/components/InputField";
 import { useState } from "react";
 import CustomButton from "@/components/CustomButton";
+import { Link } from "expo-router";
+import OAuth from "@/components/OAuth";
 
 const SignUp = () => {
     const [form, setForm] = useState({
@@ -48,7 +50,14 @@ const onSignUpPress = async () => {};
                 />
                 <CustomButton title="Sign Up" onPress={onSignUpPress} 
                 className="mt-6"/>
-                {/* oAuth */}        
+                
+                <OAuth />
+
+                <Link href={"/(auth)/sign-in"} className="text-lg text-center text-general-200 mt-10">
+                <Text>Already have and account? </Text>
+                <Text className="text-primary-500">Login</Text> 
+                </Link>
+                      
             </View>
         </View>
     </ScrollView>
