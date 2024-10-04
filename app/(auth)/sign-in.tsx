@@ -1,18 +1,44 @@
 import { icons, images } from "@/constants";
-import { Image, ScrollView, Text, View } from "react-native"
+import { Image, ScrollView, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import InputField from "@/components/InputField";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import CustomButton from "@/components/CustomButton";
-import { Link } from "expo-router";
+import { Link, useRouter } from "expo-router";
 import OAuth from "@/components/OAuth";
+import { useSignIn } from '@clerk/clerk-expo';
 
 const SignIn = () => {
+    const { signIn, setActive, isLoaded } = useSignIn()
+    const router = useRouter()
+
     const [form, setForm] = useState({
         email: "",
         password: "",
     });
-const onSignInPress = async () => {};
+    const onSignInPress = useCallback(async () => {
+        if (!isLoaded) {
+          return
+        }
+    
+        try {
+          const signInAttempt = await signIn.create({
+            identifier: form.email,
+            password: form.password
+          })
+    
+          if (signInAttempt.status === 'complete') {
+            await setActive({ session: signInAttempt.createdSessionId });
+            router.replace('/');
+          } else {
+            // See https://clerk.com/docs/custom-flows/error-handling
+            // for more info on error handling
+            console.error(JSON.stringify(signInAttempt, null, 2));
+          }
+        } catch (err: any) {
+            console.error(JSON.stringify(err, null, 2));
+        }
+    }, [isLoaded, form.email, form.password]);
 
     return (
     <ScrollView className="flex-1 bg-white">
@@ -46,7 +72,7 @@ const onSignInPress = async () => {};
 
                 <Link href={"/(auth)/sign-up"} className="text-lg text-center text-general-200 mt-10">
                 <Text>Don't have an account? </Text>
-                <Text className="text-primary-500">Sign Up</Text> 
+                <Text className="text-[#FEC300]">Sign Up</Text> 
                 </Link>
                       
             </View>
