@@ -53,6 +53,17 @@ declare interface Ride {
     };
 }
 
+declare interface Job {
+    job_title: string;
+    company_name: string;
+    salary_range: string;
+    location: string;
+    job_setting: string;
+    job_type: string;
+    post_date: string;
+    logo_image_url: string;
+}
+
 declare interface ButtonProps extends TouchableOpacityProps {
     title: string;
     bgVariant?: "primary" | "secondary" | "danger" | "outline" | "success";
