@@ -33,6 +33,8 @@ import onboarding3 from "@/assets/images/onboarding3.png";
 import signUpCar from "@/assets/images/signup-car.png";
 import heart from "@/assets/icons/heart.png"
 import airbnb from "@/assets/images/airbnb.png"
+import gear from "@/assets/icons/gear.png"
+import user from "@/assets/images/user.jpeg"
 
 export const images = {
     onboarding1,
@@ -44,6 +46,7 @@ export const images = {
     noResult,
     message,
     airbnb,
+    user,
 };
 
 export const icons = {
@@ -73,6 +76,7 @@ export const icons = {
     target,
     to,
     heart,
+    gear,
 };
 
 export const onboarding = [

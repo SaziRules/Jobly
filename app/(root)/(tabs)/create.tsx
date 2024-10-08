@@ -7,8 +7,9 @@ import { useUser } from "@clerk/clerk-expo";
 const Create = () => {
   const { user } = useUser();
     return (
+      <ScrollView>
         <SafeAreaView className="flex-1">
-            <ScrollView>
+            
             <TouchableOpacity className="flex p-5 bg-white rounded-lg mx-5 mt-5">
               <View className="flex flex-row items-center justify-between">
               <View>
@@ -91,11 +92,9 @@ const Create = () => {
                 <Image source={icons.out} className="h-[20px] w-[20px]" />
               </View>
               </View>
-            </TouchableOpacity>
-            
-            </ScrollView>    
-        
+            </TouchableOpacity>    
     </SafeAreaView>
+    </ScrollView> 
     );  
 };
 

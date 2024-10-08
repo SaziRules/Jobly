@@ -1,6 +1,6 @@
 import JobCard from '@/components/JobCard';
 import { SignedIn, useUser } from '@clerk/clerk-expo'
-import { Text, TextInput, View, StyleSheet, TouchableOpacity, Image } from 'react-native'
+import { Text, TextInput, View, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import React, {useState} from 'react';
 import { icons } from '@/constants';
@@ -9,6 +9,7 @@ export default function Page() {
   const { user } = useUser();
 
   return (
+    <ScrollView>
     <SafeAreaView>
      {/*   <SignedIn>
         <Text className='font-JakartaMedium text-[16px] pt-10 pl-5'>Hello {user?.emailAddresses[0].emailAddress}</Text>
@@ -19,6 +20,11 @@ export default function Page() {
       </View>
       
       <JobCard />
+      <JobCard />
+      <JobCard />
+      <JobCard />
+      <JobCard />
     </SafeAreaView>
+    </ScrollView>
   )
 }
